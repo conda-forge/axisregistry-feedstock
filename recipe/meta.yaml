@@ -18,7 +18,7 @@ requirements:
   host:
     - pip
     - python >=3.7
-    - setuptools-scm >=4,<6.1
+    - setuptools-scm >=6.2
   run:
     - fonttools
     - protobuf ==3.19.4
