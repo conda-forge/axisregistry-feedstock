@@ -11,18 +11,19 @@ source:
 
 build:
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 1
 
 requirements:
   host:
-    - pip
     - python >=3.7
+    - setuptools >=61.2
     - setuptools-scm >=6.2
+    - pip
   run:
-    - fonttools
-    - protobuf ==3.19.4
     - python >=3.7
+    - protobuf >=3.19.4,<4
+    - fonttools
 
 test:
   imports:
@@ -36,8 +37,7 @@ about:
   home: https://github.com/googlefonts/axisregistry/
   summary: A python API to access data from the Google Fonts variable fonts axis registry.
   license: Apache-2.0
-  license_file:
-    - LICENSE.txt
+  license_file: LICENSE.txt
 
 extra:
   recipe-maintainers:
