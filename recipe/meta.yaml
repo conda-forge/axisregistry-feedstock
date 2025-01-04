@@ -6,22 +6,22 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/axisregistry-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/axisregistry-{{ version }}.tar.gz
   sha256: a75fe87265aaac22780b295181e9ff0d1d0b7aa7302310758c06ae25bc3cca06
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.7
+    - python {{ python_min }}
     - setuptools >=61.2
     - setuptools-scm >=6.2
     - pip
   run:
-    - python >=3.7
+    - python >={{ python_min }}
     - protobuf >=3.19.4,<4
     - fonttools
 
@@ -32,6 +32,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/googlefonts/axisregistry/
