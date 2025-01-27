@@ -1,5 +1,5 @@
 {% set name = "axisregistry" %}
-{% set version = "0.4.11" %}
+{% set version = "0.4.12" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/axisregistry-{{ version }}.tar.gz
-  sha256: a75fe87265aaac22780b295181e9ff0d1d0b7aa7302310758c06ae25bc3cca06
+  sha256: 77ad156f39438802fe27cb02134b29d91801d36586ae282a71dcea5b9e5ec75b
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   host:
