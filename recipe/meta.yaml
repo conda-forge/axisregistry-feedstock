@@ -23,7 +23,7 @@ requirements:
   run:
     - gfmetadata
     - python >={{ python_min }}
-    - protobuf >=3.19.4,<4
+    - protobuf
     - fonttools
     - importlib-resources
 
