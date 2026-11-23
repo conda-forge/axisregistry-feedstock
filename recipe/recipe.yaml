@@ -1,0 +1,50 @@
+schema_version: 1
+
+context:
+  name: axisregistry
+  version: "0.6.0"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://files.pythonhosted.org/packages/source/${{ name[0] }}/${{ name }}/axisregistry-${{ version }}.tar.gz
+  sha256: 1701cfce87ba78385b11c1d0241c48068e41c39c645ba4b17c1ea9dc7057ca37
+
+build:
+  number: 1
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - setuptools >=61.2
+    - setuptools-scm >=6.2
+    - pip
+  run:
+    - gfmetadata
+    - python >=${{ python_min }}
+    - protobuf
+    - fonttools
+    - importlib-resources
+
+tests:
+  - python:
+      imports:
+        - axisregistry
+      pip_check: true
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
+
+about:
+  summary: A python API to access data from the Google Fonts variable fonts axis registry.
+  license: Apache-2.0
+  license_file: LICENSE.txt
+  homepage: https://github.com/googlefonts/axisregistry/
+
+extra:
+  recipe-maintainers:
+    - jan-janssen
